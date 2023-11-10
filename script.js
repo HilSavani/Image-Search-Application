@@ -9,8 +9,8 @@ let inputData = "";
 let page = 1;
 
 async function searchImage() {
-    inputData = inputEl.value;
-    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
+    inputData = inputEl.value || "India";
+    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}&per_page=30`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -42,6 +42,8 @@ async function searchImage() {
         showMore.style.display = "block";
     }
 }
+
+searchImage();
 
 formEl.addEventListener("submit", (event) => {
     event.preventDefault();
